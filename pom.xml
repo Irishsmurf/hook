@@ -8,8 +8,14 @@
 		<commons-collections-version>3.2.1</commons-collections-version>
 		<commons-lang-version>3.1</commons-lang-version>
 		<junit-version>4.11</junit-version>
+		<guava-version>16.0.1</guava-version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava-version}</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
