@@ -7,7 +7,7 @@ import java.util.jar.Manifest;
 
 import cf.janga.hook.utils.IOUtils;
 
-public class DefaultPluginFile implements PluginFile<CoreAPI> {
+class DefaultPluginFile implements PluginFile<CoreAPI> {
 
 	private static final String PLUGIN_CLASS_MANIFEST_ENTRY = "Plugin-class";
 	private final File file;
@@ -15,8 +15,7 @@ public class DefaultPluginFile implements PluginFile<CoreAPI> {
 
 	public DefaultPluginFile(File file) throws PluginException {
 		if (!IOUtils.hasExtension(file, PluginConstants.PLUGIN_FILE_EXTENSION)) {
-			throw new PluginException(
-					"The file provided is not a valid plugin file. Only .jar files are supported.");
+			throw new PluginException("The file provided is not a valid plugin file. Only .jar files are supported.");
 		}
 		this.file = file;
 		try {
@@ -49,11 +48,9 @@ public class DefaultPluginFile implements PluginFile<CoreAPI> {
 	public String getPluginClass() throws PluginException {
 		try {
 			Manifest manifest = this.jarFile.getManifest();
-			return manifest.getMainAttributes().getValue(
-					PLUGIN_CLASS_MANIFEST_ENTRY);
+			return manifest.getMainAttributes().getValue(PLUGIN_CLASS_MANIFEST_ENTRY);
 		} catch (IOException e) {
-			throw new PluginException(
-					"Error retrieving plugin class from plugin file.", e);
+			throw new PluginException("Error retrieving plugin class from plugin file.", e);
 		}
 	}
 }

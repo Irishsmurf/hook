@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class DefaultPluginRegistry implements PluginRegistry {
+class DefaultPluginRegistry implements PluginRegistry {
 
 	private final Map<String, PluginRegistration> registrationTable;
 
@@ -15,8 +15,7 @@ public class DefaultPluginRegistry implements PluginRegistry {
 	@Override
 	public void register(PluginRegistration registration) {
 		if (!this.registrationTable.containsKey(registration.getPluginClass())) {
-			this.registrationTable.put(registration.getPluginClass(),
-					registration);
+			this.registrationTable.put(registration.getPluginClass(), registration);
 		}
 	}
 

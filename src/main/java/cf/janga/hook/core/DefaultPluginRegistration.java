@@ -2,7 +2,7 @@ package cf.janga.hook.core;
 
 import com.google.common.base.Optional;
 
-public class DefaultPluginRegistration extends AbstractPluginInformation implements PluginRegistration {
+class DefaultPluginRegistration extends AbstractPluginInformation implements PluginRegistration {
 
 	private final Optional<String> loadingError;
 	private final String pluginClass;
