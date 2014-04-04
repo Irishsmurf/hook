@@ -33,6 +33,10 @@ public interface PluginPlatform {
 	 *            path to the jar file of a plugin.
 	 * @param application
 	 *            The application where the plugins to be loaded will be hosted.
+	 * @param <T>
+	 *            The type of the {@link CoreAPI} associated with the host
+	 *            application.
+	 * @return True if all plugins are loaded successfuly and false otherwise.
 	 * @throws PlatformException
 	 *             If there's any error while loading the plugins.
 	 */

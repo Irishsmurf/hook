@@ -12,17 +12,31 @@ public final class PluginException extends Exception {
 	/**
 	 * Creates a new {@link PluginException}.
 	 * 
-	 * @param cause The cause of this exception.
-	 * @param extension The extension associated with this exception.
+	 * @param cause
+	 *            The cause of this exception.
 	 */
 	public PluginException(Exception cause) {
 		super(cause);
 	}
 
+	/**
+	 * Creates a new {@link PluginException}.
+	 * 
+	 * @param msg
+	 *            The message for this exception
+	 * @param cause
+	 *            The cause of this exception.
+	 */
 	public PluginException(String msg, Exception cause) {
 		super(msg, cause);
 	}
 
+	/**
+	 * Creates a new {@link PluginException}.
+	 * 
+	 * @param msg
+	 *            The message for this exception
+	 */
 	public PluginException(String msg) {
 		super(msg);
 	}

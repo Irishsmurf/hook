@@ -10,7 +10,9 @@ public interface PluginFile<T extends CoreAPI> {
 	/**
 	 * Returns the path for this plugin file.
 	 * 
-	 * @return String.
+	 * @return String
+	 * @throws PluginException
+	 *             If there's any I/O error.
 	 */
 	String getFilePath() throws PluginException;
 
@@ -18,6 +20,8 @@ public interface PluginFile<T extends CoreAPI> {
 	 * Returns the size, in bytes, of this plugin file.
 	 * 
 	 * @return int
+	 * @throws PluginException
+	 *             If there's any I/O error.
 	 */
 	long getSize() throws PluginException;
 
@@ -25,6 +29,8 @@ public interface PluginFile<T extends CoreAPI> {
 	 * Returns the name of the file.
 	 * 
 	 * @return String
+	 * @throws PluginException
+	 *             If there's any I/O error.
 	 */
 	String getFileName() throws PluginException;
 
@@ -32,6 +38,8 @@ public interface PluginFile<T extends CoreAPI> {
 	 * Returns the class of the plugin wrapped by this file.
 	 * 
 	 * @return String
+	 * @throws PluginException
+	 *             If there's any I/O error.
 	 */
 	String getPluginClass() throws PluginException;
 }
