@@ -6,7 +6,7 @@
 		<version>0.0.1</version>
 	</parent>
 	<artifactId>hook</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>hook</name>
 	<description>Java Plugin Framework</description>
 	<url>https://github.com/jangasoft/hook</url>
