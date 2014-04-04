@@ -123,6 +123,21 @@ public class SimplePluginPlatformTest extends BaseUnitTest {
 		}
 	}
 
+	public void testLoadPluginFilesForJarFilePath() throws Exception {
+		String pluginFolderPath = getResourcePath("pluginFile_1.jar");
+		List<PluginFile<CoreAPI>> pluginFiles = this.pluginPlatform.loadPluginFiles(pluginFolderPath);
+		assertEquals(1, pluginFiles.size());
+		PluginFile<CoreAPI> pluginFile = pluginFiles.get(0);
+		assertNotNull(pluginFile.getFilePath());
+		assertNotNull(pluginFile.getPluginClass());
+	}
+
+	public void testLoadPluginFilesForNonJarFilePath() throws Exception {
+		String pluginFolderPath = getResourcePath("pluginFile_1.zip");
+		List<PluginFile<CoreAPI>> pluginFiles = this.pluginPlatform.loadPluginFiles(pluginFolderPath);
+		assertEquals(0, pluginFiles.size());
+	}
+
 	private List<Extension<TestCoreAPI>> mockExtensions(int numberOfExtensions) {
 		List<Extension<TestCoreAPI>> extensions = new ArrayList<Extension<TestCoreAPI>>(numberOfExtensions);
 		for (int i = 0; i < numberOfExtensions; i++) {

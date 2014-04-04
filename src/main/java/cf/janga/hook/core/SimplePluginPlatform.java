@@ -10,6 +10,9 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import cf.janga.hook.utils.FileConstants;
+import cf.janga.hook.utils.IOUtils;
+
 /**
  * A simple implementation of the {@link PluginPlatform} interface. It manually
  * loads all jars and puts all classes in the classpath for the application.
@@ -135,25 +138,30 @@ public class SimplePluginPlatform implements PluginPlatform {
 		if (filePath.isDirectory()) {
 			File[] jarFiles = filePath.listFiles(new JarFileFilter());
 			for (File jarFile : jarFiles) {
-				PluginFile<T> pluginFile;
-				try {
-					pluginFile = (PluginFile<T>) new DefaultPluginFile(jarFile);
-				} catch (PluginException e) {
-					throw new PlatformException(e);
-				}
-				pluginFiles.add(pluginFile);
+				pluginFiles.add((PluginFile<T>) toPluginFile(jarFile));
 			}
 		} else {
+			if (IOUtils.hasExtension(filePath, FileConstants.JAR_EXTENSION)) {
+				pluginFiles.add((PluginFile<T>) toPluginFile(filePath));
+			}
 		}
 
 		return pluginFiles;
+	}
+
+	private <T extends CoreAPI> PluginFile<T> toPluginFile(File jarFile) throws PlatformException {
+		try {
+			return (PluginFile<T>) new DefaultPluginFile(jarFile);
+		} catch (PluginException e) {
+			throw new PlatformException(e);
+		}
 	}
 
 	private class JarFileFilter implements FileFilter {
 
 		@Override
 		public boolean accept(File pathname) {
-			return pathname.getName() != null && pathname.getName().endsWith(".jar");
+			return pathname.getName() != null && pathname.getName().endsWith(FileConstants.JAR_EXTENSION);
 		}
 	}
 }

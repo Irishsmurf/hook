@@ -1,10 +1,10 @@
 package cf.janga.hook.core;
 
 /**
- * A plugin platform is responsible for loading plugins and their extensions, as
- * well as providing them to be handled by their respective extension points.
- * The platform also keeps tracks of all loaded plugins and their states,
- * initializing and stopping them during the life cycle of an application.
+ * A plugin platform is responsible for loading plugins and their extensions and
+ * managing their life-cycle. It also ensures all extensions are handed to their
+ * corresponding extension point to be handled. The platform also keeps tracks
+ * of all loaded plugins and their states via a {@link PluginRegistry}.
  * 
  * @author Emerson Loureiro
  * 
@@ -21,21 +21,25 @@ public interface PluginPlatform {
 
 	/**
 	 * Loads plugins found in the path provided. If the path is a folder, all
-	 * proper plugin files will be read and the plugins loaded. If the path
-	 * refers to a single plugin file, then only its plugin will be loaded.
+	 * jar files will be read. The platform assumes, in this case, that all jar
+	 * files correspond to a plugin, and will indeed treat them all as plugin
+	 * jar files. If the jar file is intead an ordinary jar file, an error will
+	 * be thrown and a record of that kept on this platforms
+	 * {@link PluginRegistry}. If the path refers to a single jar file, on the
+	 * other hand, then only that file will be loaded.
 	 * 
 	 * @param path
-	 *            The path from where the plugins should be loaded.
+	 *            The path from where the plugins should be loaded from, or the
+	 *            path to the jar file of a plugin.
 	 * @param application
 	 *            The application where the plugins to be loaded will be hosted.
 	 * @throws PlatformException
-	 *             If there's any error while loading the plugin.
+	 *             If there's any error while loading the plugins.
 	 */
-	<T extends CoreAPI> boolean loadPlugins(String path,
-			HostApplication<T> application) throws PlatformException;
+	<T extends CoreAPI> boolean loadPlugins(String path, HostApplication<T> application) throws PlatformException;
 
 	/**
-	 * Stop this plugin platform.
+	 * Stops this plugin platform.
 	 * 
 	 * @throws PlatformException
 	 *             If there's any error while stopping this platform.
