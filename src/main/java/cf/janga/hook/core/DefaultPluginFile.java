@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
+import cf.janga.hook.utils.FileConstants;
 import cf.janga.hook.utils.IOUtils;
 
 class DefaultPluginFile implements PluginFile<CoreAPI> {
@@ -25,7 +26,7 @@ class DefaultPluginFile implements PluginFile<CoreAPI> {
 	private final JarFile jarFile;
 
 	public DefaultPluginFile(File file) throws PluginException {
-		if (!IOUtils.hasExtension(file, PluginConstants.PLUGIN_FILE_EXTENSION)) {
+		if (!IOUtils.hasExtension(file, FileConstants.JAR_EXTENSION)) {
 			throw new PluginException("The file provided is not a valid plugin file. Only .jar files are supported.");
 		}
 		this.file = file;

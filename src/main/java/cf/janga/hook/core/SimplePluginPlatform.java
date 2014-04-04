@@ -83,7 +83,7 @@ public class SimplePluginPlatform implements PluginPlatform {
 		try {
 			return file.getPluginClass();
 		} catch (PluginException e) {
-			return "The plugin class name was not available";
+			return "The plugin class was not available. File: " + getPluginFileNameForError(file);
 		}
 	}
 
@@ -102,8 +102,6 @@ public class SimplePluginPlatform implements PluginPlatform {
 			if (extensionPoint != null) {
 				extensionPoint.accept(extension);
 				extension.init(application.getCoreAPI());
-			} else {
-				// TODO Handle error
 			}
 		}
 		return plugin;
