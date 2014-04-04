@@ -1,4 +1,4 @@
-# Hook [![Build Status](https://travis-ci.org/jangasoft/hook.svg?branch=master)](https://travis-ci.org/jangasoft/hook)
+# Hook [![Build Status](https://travis-ci.org/jangasoft/hook.svg?branch=master)](https://travis-ci.org/jangasoft/hook) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/hook/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Hook is a Java plugin framework. It's based on a few simple concepts:
 * Host application: an application that's been built to support plugins. A host application has one or more extension points;
@@ -17,7 +17,3 @@ The latest stable release is 0.0.1. If you use Maven, the best way to obtain it 
 ```
 
 This documentation is a work-in-progress. In time, I'll be adding more stuff in here, so bear with me.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/hook/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
