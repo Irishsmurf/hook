@@ -17,3 +17,7 @@ The latest stable release is 0.0.1. If you use Maven, the best way to obtain it 
 ```
 
 This documentation is a work-in-progress. In time, I'll be adding more stuff in here, so bear with me.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/hook/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
