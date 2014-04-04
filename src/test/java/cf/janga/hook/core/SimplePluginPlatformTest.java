@@ -22,6 +22,7 @@ import cf.janga.hook.core.sample.TestHostApplication;
 import cf.janga.hook.core.sample.TestPlugin;
 import cf.janga.hook.core.sample.TestPluginFile;
 import cf.janga.hook.test.BaseUnitTest;
+import cf.janga.hook.utils.FileConstants;
 
 @SuppressWarnings("unchecked")
 public class SimplePluginPlatformTest extends BaseUnitTest {
@@ -127,8 +128,8 @@ public class SimplePluginPlatformTest extends BaseUnitTest {
 		assertEquals(2, pluginFiles.size());
 		for (int i = 0; i < pluginFiles.size(); i++) {
 			PluginFile<CoreAPI> pluginFile = pluginFiles.get(i);
-			String pluginFileName = "pluginFile_" + (i + 1) + ".jar";
-			assertEquals(pluginFileName, pluginFile.getFileName());
+			assertTrue(pluginFile.getFileName().startsWith("pluginFile_"));
+			assertTrue(pluginFile.getFileName().endsWith(FileConstants.JAR_EXTENSION));
 			assertNotNull(pluginFile.getFilePath());
 			assertNotNull(pluginFile.getPluginClass());
 		}
