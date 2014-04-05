@@ -1,16 +1,12 @@
-# Hook [![Build Status](https://travis-ci.org/jangasoft/hook.svg?branch=master)](https://travis-ci.org/jangasoft/hook) [![Coverage Status](https://coveralls.io/repos/jangasoft/hook/badge.png?branch=master)](https://coveralls.io/r/jangasoft/hook?branch=master) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/hook/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# Hook
 
-This documentation is a work-in-progress. In time, I'll be adding more stuff in here, so bear with me.
-
-### Overview
-
-Hook is a Java plugin framework. It's based on a few simple concepts:
+[![Build Status](https://travis-ci.org/jangasoft/hook.svg?branch=master)](https://travis-ci.org/jangasoft/hook) [![Coverage Status](https://coveralls.io/repos/jangasoft/hook/badge.png?branch=master)](https://coveralls.io/r/jangasoft/hook?branch=master) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jangasoft/hook/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+ 
+Hook is a Java plugin framework, based on a few simple concepts:
 * Host application: an application that's been built to support plugins. A host application has one or more extension points;
 * Extension point: a part of the application that can be extended via plugins;
 * Plugin: an isolated component that extends the functionalities of a specific host application by providing extensions;
 * Extension: some new functionality provided by a plugin and which hooks to a specific extension point in a host application.
-
-### Getting Hook
 
 The latest stable release is 0.0.1. If you use Maven, the best way to obtain it is adding the dependency below to your project. This is picked up from the Central Repository - which maven automatically reaches out to - so there's no need to add any repository.
 
@@ -22,13 +18,23 @@ The latest stable release is 0.0.1. If you use Maven, the best way to obtain it 
 </dependency>
 ```
 
+# Documentation
+
+This documentation is a work-in-progress. In time, I'll be adding more stuff in here, so bear with me.
+
 ### Platform and Plugin Lifecycle
 
-Hook's platform is the entry point for applications to load plugins into themselves. It is comprised of the plugin loader (which we simply call platform at the code level, since it's the entry point for developers) and the plugin registry. The plugin loader - as the name says - loads plugins into the classpath and initializes all of its extensions. The loader uses the plugin registry to keep track of every plugin that's been attempted to be loaded. What this means is that, even a plugin fails to load - for whatever reason - the registry will hold as much information as is available about the plugin, along with, obviously, all information about those that were successfuly loaded. This allows the application to display runtime information about the plugins it's currently running with.
+Hook's platform is the entry point for applications to load plugins into themselves. It is comprised of the plugin loader (which we simply call platform at the code level, since it's the entry point for developers) and the plugin registry. The plugin loader - as the name says - loads plugins into the classpath and initializes all of its extensions. The loader uses the plugin registry to keep track of every plugin that's been attempted to be loaded. What this means is that, even a plugin fails to load - for whatever reason - the registry will hold as much information as is available about the plugin, along with, obviously, all information about those that were successfuly loaded. This allows the application to display information about the plugins it's currently running with.
 
-TODO: Lifecyclr
+It's important to understand also what goes under the hood when the loader is loading a plugin. This has been summarized in the diagram below:
 
-### Writing your Plugins with Hook
+TODO: Continue
+
+### Defining a Plugin-based Application
+
+TODO
+
+### Writing Plugins
 
 Most of the things you'll need to do around developing a plugin with Hook involves actual coding instead of cofiguration files. Because, as you'll see, the plugin is essentially a container that holds some information about its functionalities along with the extensions that actually implement those functionalities, we didn't want to see developers having to keep configuration files in synch with code. Instead, most of the stuff Hook needs from a plugin, it'll simply ask you - the plugin developer - to write the code for it. If you change an extension - e.g., the way it's instantiated, the package - chances are you'll see a problem right away.
 
