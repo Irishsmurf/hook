@@ -15,7 +15,7 @@ import java.util.Collection;
 
 /**
  * The plugin registry keeps runtime information about each plugin loaded by its
- * respective {@link PluginPlatform}.
+ * respective {@link PluginLoader}.
  * 
  * @author Emerson Loureiro
  * 

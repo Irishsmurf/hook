@@ -25,13 +25,13 @@ import cf.janga.hook.test.BaseUnitTest;
 import cf.janga.hook.utils.FileConstants;
 
 @SuppressWarnings("unchecked")
-public class SimplePluginPlatformTest extends BaseUnitTest {
+public class SimplePluginLoaderTest extends BaseUnitTest {
 
-	private SimplePluginPlatform pluginPlatform;
+	private SimplePluginLoader pluginPlatform;
 
 	@Override
 	protected void setupImpl() {
-		this.pluginPlatform = new SimplePluginPlatform();
+		this.pluginPlatform = new SimplePluginLoader();
 	}
 
 	public void testPluginCycle() throws Exception {
@@ -45,7 +45,7 @@ public class SimplePluginPlatformTest extends BaseUnitTest {
 		final List<PluginFile<TestCoreAPI>> pluginFiles = new ArrayList<PluginFile<TestCoreAPI>>();
 		PluginFile<TestCoreAPI> pluginFile = new TestPluginFile(plugin);
 		pluginFiles.add(pluginFile);
-		this.pluginPlatform = new SimplePluginPlatform() {
+		this.pluginPlatform = new SimplePluginLoader() {
 
 			@Override
 			<T extends CoreAPI> Plugin<T> loadPluginIntoClasspath(PluginFile<T> pluginFile) {
@@ -93,7 +93,7 @@ public class SimplePluginPlatformTest extends BaseUnitTest {
 		pluginFiles.add(pluginFile);
 
 		final String message = "Sample error message";
-		this.pluginPlatform = new SimplePluginPlatform() {
+		this.pluginPlatform = new SimplePluginLoader() {
 
 			@Override
 			<T extends CoreAPI> Plugin<T> loadPluginIntoClasspath(PluginFile<T> pluginFile) throws PluginException {

@@ -12,7 +12,7 @@
 package cf.janga.hook.core;
 
 /**
- * A plugin platform is responsible for loading plugins and their extensions and
+ * A plugin loader is responsible for loading plugins and their extensions and
  * managing their life-cycle. It also ensures all extensions are handed to their
  * corresponding extension point to be handled. The platform also keeps tracks
  * of all loaded plugins and their states via a {@link PluginRegistry}.
@@ -20,7 +20,7 @@ package cf.janga.hook.core;
  * @author Emerson Loureiro
  * 
  */
-public interface PluginPlatform {
+public interface PluginLoader {
 
 	/**
 	 * Initializes this plugin platform.

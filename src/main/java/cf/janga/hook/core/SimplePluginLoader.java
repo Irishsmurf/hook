@@ -25,18 +25,18 @@ import cf.janga.hook.utils.FileConstants;
 import cf.janga.hook.utils.IOUtils;
 
 /**
- * A simple implementation of the {@link PluginPlatform} interface. It manually
+ * A simple implementation of the {@link PluginLoader} interface. It manually
  * loads all jars and puts all classes in the classpath for the application.
  * 
  * @author Emerson Loureiro
  * 
  */
 @SuppressWarnings("unchecked")
-public class SimplePluginPlatform implements PluginPlatform {
+public class SimplePluginLoader implements PluginLoader {
 
 	private final PluginRegistry pluginRegistry;
 
-	public SimplePluginPlatform() {
+	public SimplePluginLoader() {
 		this.pluginRegistry = new DefaultPluginRegistry();
 	}
 

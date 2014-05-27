@@ -35,7 +35,7 @@ public interface Extension<T extends CoreAPI> {
 
 	/**
 	 * Initializes this extension. This method is automatically called by the
-	 * {@link SimplePluginPlatform} whenever the plugin associated with the
+	 * {@link SimplePluginLoader} whenever the plugin associated with the
 	 * extension is loaded, and the extension initialized.
 	 * 
 	 * @param coreAPI
