@@ -22,13 +22,27 @@ The latest stable release is 0.0.1. If you use Maven, the best way to obtain it 
 
 This documentation is a work-in-progress. In time, I'll be adding more stuff in here, so bear with me.
 
-### Platform and Plugin Lifecycle
+### Plugin Loading and Lifecycle
 
-Hook's platform is the entry point for applications to load plugins into themselves. It is comprised of the plugin loader (which we simply call platform at the code level, since it's the entry point for developers) and the plugin registry. The plugin loader - as the name says - loads plugins into the classpath and initializes all of its extensions. The loader uses the plugin registry to keep track of every plugin that's been attempted to be loaded. What this means is that, even a plugin fails to load - for whatever reason - the registry will hold as much information as is available about the plugin, along with, obviously, all information about those that were successfuly loaded. This allows the application to display information about the plugins it's currently running with.
+The core of Hook's plugin platform is the plugin loader and the plugin registry. The plugin loader - as the name says - loads plugins into the classpath and initializes all of its extensions. The loader uses the plugin registry to keep track of every plugin that's been attempted to be loaded. What this means is that, even a plugin fails to load - for whatever reason - the registry will hold as much information as is available about the plugin, along with, obviously, all information about those that were successfuly loaded. This allows the application to display information about the plugins it's currently running with.
 
-It's important to understand also what goes under the hood when the loader is loading a plugin. This has been summarized in the diagram below:
+A more in depth view of what happens under the hood when the loader is loading a plugin is given below:
 
-TODO: Continue
+1. The plugin's jar file is loaded and all classes in it put into the classpath;
+2. The main plugin class is instantiated;
+3. The list of all extensions provided by the plugin is instantiated;
+4. For each extension, the plugin loader finds the extension point of the hosting application responsible for it. The plugin loader then asks the extension point to handle the extension, then it initializes the extension point. At this point it is provided with the API that the hosting application provides to extensions. Failing any of these steps for any of the extensions will fail the loading of the plugin altogether;
+5. When the plugin loader has finished going through all extensions, it registers the end result of the operation (i.e., whether the plugin was successfully loaded or not, information about the plugin, etc) against the plugin registry.
+
+#### The Plugin Archive
+
+Having said the above, plugins are packaged in jar archives. We'll use the term plugin archive to refer to these jar archives. We've tried to keep to a minimum anything that a plugin developer would be required to include in the plugin archive. With that in mind, there are only two things that any plugin archive should include.
+* A class that implements the ```Plugin``` interface. This is the entry point for the plugin loader in terms of the plugin's lifecycle, as explained above;
+* An entry in the jar's manifest, pointing to class above, as below:
+
+```manifest
+Plugin-class: com.somecompany.plugin.FooPlugin
+```
 
 ### Defining a Plugin-based Application
 
@@ -37,16 +51,6 @@ TODO
 ### Writing Plugins
 
 Most of the things you'll need to do around developing a plugin with Hook involves actual coding instead of cofiguration files. Because, as you'll see, the plugin is essentially a container that holds some information about its functionalities along with the extensions that actually implement those functionalities, we didn't want to see developers having to keep configuration files in synch with code. Instead, most of the stuff Hook needs from a plugin, it'll simply ask you - the plugin developer - to write the code for it. If you change an extension - e.g., the way it's instantiated, the package - chances are you'll see a problem right away.
-
-#### The Plugin Archive
-
-Having said the above, plugins are packaged in jar archives, with a couple of contents required. We'll use the term plugin archive to refer to a jar file that has these required contents, which are:
-* A class that implements the ```Plugin``` interface;
-* An entry in the jar's manifest, pointing to said class, as below:
-
-```manifest
-Plugin-class: com.somecompany.plugin.FooPlugin
-```
 
 #### Writing the Basic Plugin Code
 
