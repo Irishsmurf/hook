@@ -36,7 +36,7 @@ A more in depth view of what happens under the hood when the loader is loading a
 4. For each extension, the plugin loader finds the extension point of the hosting application responsible for it. The plugin loader then asks the extension point to handle the extension, then it initializes the extension point. At this point it is provided with the API that the hosting application provides to extensions. Failing any of these steps for any of the extensions will fail the loading of the plugin altogether;
 5. When the plugin loader has finished going through all extensions, it registers the end result of the operation (i.e., whether the plugin was successfully loaded or not, information about the plugin, etc) against the plugin registry.
 
-### The Plugin Archive
+## The Plugin Archive
 
 Having said the above, plugins are packaged in jar archives. We'll use the term plugin archive to refer to these jar archives. We've tried to keep to a minimum anything that a plugin developer would be required to include in the plugin archive. With that in mind, there are only two things that any plugin archive should include.
 * A class that implements the ```Plugin``` interface. This is the entry point for the plugin loader in terms of the plugin's lifecycle, as explained above;
