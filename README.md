@@ -19,6 +19,7 @@ This documentation is a work-in-progress. In time, I'll be adding more stuff in 
 ## The Basics
 
 As said before, Hook provides the basic building blocks to enable an application to be extended via plugins. Everything in Hook revolves around a few basic concepts. These are listed and described below.
+
 * Host application: an application that's been built to support plugins. A host application has one or more extension points;
 * Extension point: a part of the application that can be extended via plugins;
 * Plugin: an isolated component that extends the functionalities of a specific host application by providing extensions;
@@ -29,6 +30,7 @@ As said before, Hook provides the basic building blocks to enable an application
 The core of Hook's plugin platform is the plugin loader and the plugin registry. The plugin loader - as the name says - loads plugins into the classpath and initializes all of its extensions. The loader uses the plugin registry to keep track of every plugin that's been attempted to be loaded. What this means is that, even a plugin fails to load - for whatever reason - the registry will hold as much information as is available about the plugin, along with, obviously, all information about those that were successfuly loaded. This allows the application to display information about the plugins it's currently running with.
 
 A more in depth view of what happens under the hood when the loader is loading a plugin is given below:
+
 1. The plugin's jar file is loaded and all classes in it put into the classpath;
 2. The main plugin class is instantiated;
 3. The list of all extensions provided by the plugin is instantiated;
@@ -38,6 +40,7 @@ A more in depth view of what happens under the hood when the loader is loading a
 ### The Plugin Archive
 
 Having said the above, plugins are packaged in jar archives. We'll use the term plugin archive to refer to these jar archives. We've tried to keep to a minimum anything that a plugin developer would be required to include in the plugin archive. With that in mind, there are only two things that any plugin archive should include.
+
 * A class that implements the ```Plugin``` interface. This is the entry point for the plugin loader in terms of the plugin's lifecycle, as explained above;
 * An entry in the jar's manifest, pointing to class above, as below:
 
