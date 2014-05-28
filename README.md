@@ -39,7 +39,7 @@ A more in depth view of what happens under the hood when the loader is loading a
 
 ### The Plugin Archive
 
-Having said the above, plugins are packaged in jar archives. We'll use the term plugin archive to refer to these jar archives. We've tried to keep to a minimum anything that a plugin developer would be required to include in the plugin archive. With that in mind, there are only two things that any plugin archive should include.
+Having said the above, plugins are packaged in jar files. We'll use the term plugin archive to refer to these jar files. We've tried to keep to a minimum anything that a plugin developer would be required to include in the plugin archive. With that in mind, there are only two things that any plugin archive should include.
 
 * A class that implements the ```Plugin``` interface. This is the entry point for the plugin loader in terms of the plugin's lifecycle, as explained above;
 * An entry in the jar's manifest, pointing to class above, as below:
