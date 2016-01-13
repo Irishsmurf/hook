@@ -1,6 +1,6 @@
 # Hook
 
-[![Build Status](https://travis-ci.org/jangasoft/hook.svg?branch=master)](https://travis-ci.org/jangasoft/hook) [![Coverage Status](https://coveralls.io/repos/jangasoft/hook/badge.png?branch=master)](https://coveralls.io/r/jangasoft/hook?branch=master)
+[![Coverage Status](https://coveralls.io/repos/jangasoft/hook/badge.png?branch=master)](https://coveralls.io/r/jangasoft/hook?branch=master)
 
 Hook is a plugin framework and platform. It enables applications to be designed in such a way that they can be extended via plugins (also called, addons, extensions, and others). The latest stable release is 0.0.1. If you use Maven, the best way to obtain it is adding the dependency below to your project. This is picked up from the Central Repository - which maven automatically reaches out to - so there's no need to add any repository. Java 6 or higher is required.
 
